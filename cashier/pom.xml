@@ -36,6 +36,12 @@
             <artifactId>spring-rabbit-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.kcy</groupId>
+            <artifactId>message-objects</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,7 +59,8 @@
                         <image>gcr.io/distroless/java:11</image>
                     </from>
                     <to>
-<!--                        You need to import "registry-1.docker.io" certificate to the jdk which is running maven to be able to push images to the docker hub.-->
+<!--                    I have made server definition in setting.xml for authentication (not good for production.) -->
+<!--                    You need to import "registry-1.docker.io" certificate to the jdk which is running maven to be able to push images to the docker hub. -->
                         <image>sliceoflife43/cashier</image>
                     </to>
                 </configuration>
