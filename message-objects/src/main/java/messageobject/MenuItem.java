@@ -1,22 +1,26 @@
 package messageobject;
 
-public class MenuItem {
+import java.io.Serializable;
+
+public class MenuItem implements Serializable {
     // Price, Name, Description, Id
     private int id;
     private String name;
     private String description;
     private double price;
     private ItemType type;
+    long preparationTimeMillis;
 
     public MenuItem() {
     }
 
-    public MenuItem(int id, String name, String description, double price, ItemType type) {
+    public MenuItem(int id, String name, String description, double price, ItemType type, long preparationTimeMillis) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.type = type;
+        this.preparationTimeMillis = preparationTimeMillis;
     }
 
     public int getId() {
@@ -57,5 +61,13 @@ public class MenuItem {
 
     public void setType(ItemType type) {
         this.type = type;
+    }
+
+    public long getPreparationTimeMillis() {
+        return preparationTimeMillis;
+    }
+
+    public void setPreparationTimeMillis(long preparationTimeMillis) {
+        this.preparationTimeMillis = preparationTimeMillis;
     }
 }

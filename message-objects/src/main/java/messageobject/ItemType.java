@@ -1,5 +1,7 @@
 package messageobject;
 
-public enum ItemType {
+import java.io.Serializable;
+
+public enum ItemType implements Serializable {
     MEAL, DESERT, DRINK
 }

@@ -1,42 +1,27 @@
 package messageobject;
 
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Menu {
-    private int id;
-    private String menuName;
-    private List<MenuItem> items = new ArrayList<>();
+    private Map<Integer, MenuItem> menu = new HashMap<>();
 
     public Menu() {
     }
 
-    public int getId() {
-        return id;
+    public void addItem(MenuItem item) {
+        this.menu.put(item.getId(), item);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Map<Integer, MenuItem> getMenu() {
+        return menu;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public void setMenu(Map<Integer, MenuItem> menu) {
+        this.menu = menu;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
-    }
-
-    public List<MenuItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<MenuItem> items) {
-        this.items = items;
-    }
-
-    public void addItem(MenuItem item){
-        this.items.add(item);
+    public MenuItem getItem(Integer itemId) {
+        return this.menu.get(itemId);
     }
 }
