@@ -1,6 +1,7 @@
 package com.kcy.cashier.controller;
 
 import com.kcy.cashier.dto.OrderDTO;
+import com.kcy.cashier.service.CacheService;
 import com.kcy.cashier.service.ProductService;
 import messageobject.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class CachierController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    CacheService cacheService;
 
     @GetMapping("/getMenu")
     public ResponseEntity getMenu() {
@@ -35,10 +39,12 @@ public class CachierController {
     // Get ready order with order id from cache.
     @GetMapping("/getProduct")
     public ResponseEntity getProduct(@RequestParam UUID orderId) {
+        Object product = cacheService.getFromCache(orderId.toString());
 
-        // TODO Check cache with orderId
-        // TODO If product is ready return it, else return meaningful error?
-
-        return ResponseEntity.ok("product.");
+        if (product != null) {
+            return ResponseEntity.ok(product);
+        } else {
+            return ResponseEntity.ok("Your product is being prepared.");
+        }
     }
 }

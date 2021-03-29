@@ -35,4 +35,12 @@ public class Product implements Serializable {
 
         System.out.println(LocalDateTime.now().toString() + ": Order ready, order id: " + order.getOrderId().toString());
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
