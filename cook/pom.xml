@@ -72,8 +72,8 @@
                         <image>gcr.io/distroless/java:11</image>
                     </from>
                     <to>
-<!--                    You need to import "registry-1.docker.io" certificate to the jdk which is running maven to be able to push images to the docker hub. -->
-<!--                    I have made server definition in setting.xml for authentication (not good for production.) -->
+                        <!--                    You need to import "registry-1.docker.io" certificate to the jdk which is running maven to be able to push images to the docker hub. -->
+                        <!--                    I have made server definition in setting.xml for authentication (not good for production.) -->
                         <image>sliceoflife43/cook</image>
                     </to>
                 </configuration>
@@ -85,6 +85,17 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!--            Below configuration sets environment variables expected in application.conf and prevents surefire to cause error.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <RABBIT_HOST>192.168.198.133</RABBIT_HOST>
+                        <REDIS_HOST>192.168.198.133</REDIS_HOST>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>
