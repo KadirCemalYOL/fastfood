@@ -1,5 +1,6 @@
 package com.kcy.cook.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
@@ -8,10 +9,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 @Configuration
 public class RedisConfig {
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("192.168.198.133");
+        redisStandaloneConfiguration.setHostName(redisHost);
         redisStandaloneConfiguration.setPort(6379);
 
         return new JedisConnectionFactory(redisStandaloneConfiguration);
